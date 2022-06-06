@@ -40,7 +40,7 @@ const Listings = () => {
           {listings?.map((listing:any, index) => (
             <Link
               key={index}
-              href={`/assets/${listing._id}}`}
+              href={`/assets/${listing._id}`}
             >
               <a>
                 <NftCard listing={listing} />

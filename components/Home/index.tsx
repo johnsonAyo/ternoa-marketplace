@@ -7,7 +7,8 @@ import TopNavbarLayout from "../../layouts/TopNavbarLayout";
 import CollectionStats from "./CollectionStats";
 import { collectionData } from "../../static/collections";
 import Listings from "./Listings";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const style = {
   wrapper: `flex flex-col dark:bg-[#202226] relative flex flex-col`,
@@ -49,6 +50,7 @@ export default function Home() {
   return (
     <div>
       <TopNavbarLayout>
+        <ToastContainer position="top-center" />
         <div className={style.wrapper}>
           <div className={style.container}>
             <div className={style.bannerContainer}>
@@ -94,7 +96,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-         
 
           <Listings />
         </div>

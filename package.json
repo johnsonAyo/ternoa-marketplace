@@ -6,19 +6,23 @@
     "start": "next start"
   },
   "dependencies": {
-    "@formiz/core": "^1.8.1",
-    "@formiz/validations": "^1.0.0",
+    "@chakra-ui/react": "^2.1.2",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@thirdweb-dev/react": "^2.4.0",
     "@thirdweb-dev/sdk": "^2.3.7",
     "axios": "^0.27.2",
     "ethers": "^5.6.8",
+    "framer-motion": "^6.3.10",
     "next": "latest",
     "next-themes": "^0.2.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "react-toastify": "^9.0.3",
+    "sweetalert2": "^11.4.17"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

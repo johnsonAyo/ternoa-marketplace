@@ -1,13 +1,32 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { HTMLInputTypeAttribute } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
-type InputBaseProps = {
-  type?: HTMLInputTypeAttribute;
+const url = "http://localhost:4000/api/nft";
+
+const style = {
+  container: `mt-2`,
+  wrapper: `flex flex-col h-[400px]  dark:bg-[#202226] `,
 };
 
+const initialState = {
+  title: "",
+  price: "",
+  desc: "",
+  img: "",
+};
 export default function MyModal() {
   let [isOpen, setIsOpen] = useState(false);
+  const [state, setState] = useState<any | null>(initialState);
+  const { title, desc, img, price } = state;
+
+  const addContact = async (data: any) => {
+    const response = await axios.post(url, data);
+    if (response.status === 200) {
+      toast.success(response.data);
+    }
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -16,28 +35,19 @@ export default function MyModal() {
   function openModal() {
     setIsOpen(true);
   }
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (!title || !img || !desc || !price) {
+      toast.error("please provide value into each of the input fiels");
+    } else addContact(state);
+    setIsOpen(false);
+    toast.success("NFT Minted Successfully");
+  };
 
-  type HTMLInputTypeAttribute =
-    | "number"
-    | "search"
-    | "button"
-    | "time"
-    | "image"
-    | "text"
-    | "checkbox"
-    | "color"
-    | "date"
-    | "datetime-local"
-    | "email"
-    | "file"
-    | "hidden"
-    | "month"
-    | "password"
-    | "radio"
-    | "range"
-    | (string & {});
-
-  const handleInputChange = () => {};
+  const handleInputChange = (e: any) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
 
   return (
     <>
@@ -83,17 +93,51 @@ export default function MyModal() {
                   >
                     Create your Nft
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <form>
-                      <label htmlFor="name">Name</label>
+                  <div className={style.container}>
+                    <form className={style.wrapper} onSubmit={handleSubmit}>
+                      <label htmlFor="title">Name</label>
                       <input
                         type="text"
-                        name="name"
-                        id="name"
+                        name="title"
+                        id="title"
                         placeholder="Enter Name ..."
                         onChange={handleInputChange}
-                        value={name}
+                        value={title}
                       />
+                      <label htmlFor="desc">Description</label>
+                      <input
+                        type="text"
+                        name="desc"
+                        id="desc"
+                        placeholder="Enter description ..."
+                        onChange={handleInputChange}
+                        value={desc}
+                      />
+                      <label htmlFor="img">Img</label>
+                      <input
+                        type="text"
+                        name="img"
+                        id="img"
+                        placeholder="Enter Image Link ..."
+                        onChange={handleInputChange}
+                        value={img}
+                      />
+                      <label htmlFor="price">Img</label>
+                      <input
+                        type="text"
+                        name="price"
+                        id="price"
+                        placeholder="Enter Image Link ..."
+                        onChange={handleInputChange}
+                        value={price}
+                      />
+
+                      <button
+                        type="submit"
+                        className=" mt-10 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      >
+                        List your NFT
+                      </button>
                     </form>
                     <p className="text-sm text-gray-500"></p>
                   </div>
