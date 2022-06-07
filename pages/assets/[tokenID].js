@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { BigNumber } from "ethers";
+import axios from "axios";
 import TopNavbarLayout from "../../layouts/TopNavbarLayout";
-// import NFTImage from "../../../components/NFTDetails/NFTImage";
-// import NFTSalesInfo from "../../../components/NFTDetails/NFTSalesInfo";
-// import NFTDetails from "../../../components/NFTDetails/NFTDetails";
-// import NFTBasicInfo from "../../../components/NFTDetails/NFTBasicInfo";
+import NFTImage from "../../components/NFTDetails/NFTImage";
+import NFTSalesInfo from "../../components/NFTDetails/NFTSalesInfo";
+import NFTDetails from "../../components/NFTDetails/NFTDetails";
+import NFTBasicInfo from "../../components/NFTDetails/NFTBasicInfo";
+import { toast } from "react-toastify";
 
 const style = {
   wrapper: `h-[100vh] mx-auto flex max-w-2xl flex-col space-y-4 py-4  dark:bg-[#202226]
@@ -23,13 +24,24 @@ const NFT = () => {
   const [listing, setListing] = useState([]);
   const { tokenID } = router.query;
   console.log(tokenID);
-  // const marketPlace = useMarketplace(
-  //   "0xc79E0B144B2C815276478b87B9DDAEF2F14dB916"
-  // );
-  // const address = useAddress();
+
   useEffect(() => {
     getListing();
   }, []);
+
+  const deleteNft = async () => {
+    try {
+      const response = await axios.delete(
+        `https://ternoa.herokuapp.com/api/nft/${tokenID}`
+      );
+      if (response.status === 204) {
+        router.replace("/");
+        toast.success(" Nft Successfully Deleted");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (!tokenID) router.replace("/");
@@ -38,14 +50,18 @@ const NFT = () => {
   const getListing = async () => {
     try {
       setLoading(true);
-      const listing = await marketPlace.getListing(BigNumber.from(tokenID));
-      setListing(listing);
-      setLoading(false);
+      const list = await axios.get(
+        `https://ternoa.herokuapp.com/api/nft/${tokenID}`
+      );
+      if (list.status === 200) {
+        setListing(list.data.data.data);
+        setLoading(false);
+        console.log(listing);
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <TopNavbarLayout>
@@ -56,17 +72,16 @@ const NFT = () => {
           <div className={style.nftContainer}>
             <div className={style.leftContainer}>
               <div className={style.leftElement}>
-                {/* {<NFTImage image={listing?.asset?.image} />} */}
+                {<NFTImage image={listing.img} />}
               </div>
-              <div className={style.leftElement}>{/* <NFTDetails /> */}</div>
+              <div className={style.leftElement}>
+                <NFTDetails />
+              </div>
             </div>
             <div className={style.rightContainer}>
-              {/* <NFTBasicInfo name={listing?.asset?.name} /> */}
+              <NFTBasicInfo name={listing?.name} />
               <div className={style.buyoutContainer}>
-                {/* <NFTSalesInfo
-                  price={listing?.buyoutCurrencyValuePerToken?.displayValue}
-                  buyNFT={buyNFT}
-                /> */}
+                <NFTSalesInfo deleteNft={deleteNft} />
               </div>
             </div>
           </div>

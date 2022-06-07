@@ -12,11 +12,10 @@ const style = {
 export default function Modal() {
   const router = useRouter();
   const { tokenID } = router.query;
-  const url = `http://localhost:4000/api/nft/${tokenID}`;
+  const url = `https://ternoa.herokuapp.com/api/nft/${tokenID}`;
   let [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState<any | null>("");
   const { title, desc, img, price } = state;
-  
 
   const editNft = async (data: any) => {
     const response = await axios.patch(url, data);

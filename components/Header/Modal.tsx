@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-const url = "http://localhost:4000/api/nft";
+const url = "https://ternoa.herokuapp.com/api/nft";
 
 const style = {
   container: `mt-2`,

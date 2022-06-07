@@ -13,7 +13,7 @@ const style = {
 };
 
 const NFTImage = ({ image }: any) => {
-  console.log(image);
+  // console.log(image);
   return (
     <div className={style.wrapper}>
       <div className={style.nftHeader}>
@@ -25,6 +25,7 @@ const NFTImage = ({ image }: any) => {
       </div>
       <div className={style.imageContainer}>
         {image && <Image src={image} alt="nft" height="350" width="350" />}
+        {console.log(image)}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const Listings = () => {
 
   const getListings = async () => {
     try {
-      const list: any = await axios.get("http://localhost:4000/api/nft");
+      const list: any = await axios.get("https://ternoa.herokuapp.com/api/nft");
       if (list.status === 200) {
         const  nft = list.data.data.data
         setListings(nft);
