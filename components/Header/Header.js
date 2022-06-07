@@ -12,7 +12,7 @@ import SearchInput from "./SearchInput";
 import NavMenus from "./NavMenus";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import MyModal from "./Modal";
+import MyModal from "../../pages/AddNft";
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -81,11 +81,9 @@ const Navbar = () => {
 
   return (
     <header className={style.wrapper}>
-      <div className={style.logoContainer}>
-        <Link href="/">
-          <a>
-            <Logo />
-          </a>
+      <div>
+        <Link href="/AddNft">
+          <h1>Add Nft</h1>
         </Link>
       </div>
 
@@ -99,7 +97,6 @@ const Navbar = () => {
 
       <div className={style.iconsContainer}>
         <UserCircleIcon className={`${style.icons} ${style.desktopIcons}`} />
-        <MyModal />
         {renderThemeChanger()}
         <SearchIcon className={`${style.icons} ${style.mobileIcons}`} />
         <MenuIcon className={`${style.icons} ${style.tabletIcons}`} />

@@ -2,7 +2,6 @@ import React from "react";
 import { BsCreditCard2FrontFill, BsFillTagFill } from "react-icons/bs";
 import { AiOutlineQuestionCircle, AiOutlineClockCircle } from "react-icons/ai";
 import { Image } from "@chakra-ui/react";
-import Modal from "./Modal";
 
 const style = {
   wrapper: ` flex flex-col divide-y border dark:divide-black
@@ -24,7 +23,9 @@ const style = {
   buttonIcon: `h-6 w-6`,
 };
 
-const NFTSalesInfo = ({ price, deleteNft }: any) => {
+const NFTSalesInfo = ({ price, deleteNft, editNft }: any) => {
+
+  
   return (
     <div className={style.wrapper}>
       <div className={style.header}>
@@ -48,11 +49,12 @@ const NFTSalesInfo = ({ price, deleteNft }: any) => {
           </div>
         </div>
         <div className={style.buttonsContainer}>
-          <div className={`${style.button} ${style.purchaseButton}`}>
+          <div
+            onClick={editNft}
+            className={`${style.button} ${style.purchaseButton}`}
+          >
             <BsCreditCard2FrontFill className={style.buttonIcon} />
-            <span className="text-lg font-semibold">
-              <Modal />
-            </span>
+            <span className="text-lg font-semibold">Edit Nft</span>
           </div>
           <div
             onClick={deleteNft}
