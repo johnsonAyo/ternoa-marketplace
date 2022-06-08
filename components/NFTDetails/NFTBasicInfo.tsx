@@ -5,15 +5,16 @@ import NFTSubInfo from "./NFTSubInfo";
 
 const style = {
   topContainer: `flex items-ceter justofy-between`,
-  collectionTitle: `text-lg font-semibold text-blue-500`,
+  collectionTitle: `mt-5 text-lg font-semibold  `,
   actionItems: `flex divide-x divide-gray-300 rounded-lg border border-gray-300 mx-4`,
   actionItemContainer: `flex cursor-pointer items-center justofy-center p-3`,
   icon: `h-6 w-6 text-gray-500 dark:textgray-400`,
-  assetTitle: `pt-6 text-4xl font-bold text-gray-700 dark:text-gray-100`,
+  assetTitle: `pt-6 text-3xl font-bold text-blue-500 `,
   subInfoContainer: `hidden lg:block`,
 };
 
 const NFTBasicInfo = ({ name }: any) => {
+  console.log(name);
   const actionItems = [
     { icon: <BiRefresh className={style.icon} /> },
     { icon: <BiLinkExternal className={style.icon} /> },
@@ -23,7 +24,7 @@ const NFTBasicInfo = ({ name }: any) => {
   return (
     <div>
       <div className={style.topContainer}>
-        <div className={style.collectionTitle}>HypeBears</div>
+        <div className={style.assetTitle}>{name} </div>
         <div className={style.actionItems}>
           {actionItems.map((item, index) => (
             <div key={index} className={style.actionItemContainer}>
@@ -32,7 +33,7 @@ const NFTBasicInfo = ({ name }: any) => {
           ))}
         </div>
       </div>
-      <div className={style.assetTitle}> {name} </div>
+      <div className={style.collectionTitle}> {name} </div>
       <div className={style.subInfoContainer}>
         <NFTSubInfo />
       </div>

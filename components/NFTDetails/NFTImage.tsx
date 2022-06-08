@@ -24,7 +24,6 @@ const NFTImage = ({ image }: any) => {
       </div>
       <div className={style.imageContainer}>
         {image && <Image src={image} alt="nft" height="350" width="350" />}
-        {console.log(image)}
       </div>
     </div>
   );

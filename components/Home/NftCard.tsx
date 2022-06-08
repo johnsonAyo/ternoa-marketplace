@@ -16,8 +16,6 @@ const style = {
   priceTitle: `text-xs font-light`,
   wethImageContainer: `flex items-center justify-end space-x-2`,
   likesContainer: `flex items-center justify-end space-x-2`,
-  heartIcon: `h-3 w-3 text-gray-500 dark:text-gray-400`,
-  likeCounter: `text-xs text-gray-500 dark:text-gray-500`,
 };
 
 const NftCard = ({ listing }: { listing: any }) => {
@@ -38,22 +36,14 @@ const NftCard = ({ listing }: { listing: any }) => {
             {listing && (
               <div className={style.collectionTitle}>{listing.title}</div>
             )}
-            <div className={style.nftTitle}>{listing.title}</div>
+            <div className={style.nftTitle}>{listing.desc}</div>
           </div>
-        </div>
-        <div className={style.priceContainer}>
-          <div className={style.priceTitle}>Buy at</div>
-          <div className={style.wethImageContainer}>
-            <Image height={16} width={16} alt="weth" src="/weth-logo.svg" />
-            {/* <div className={style.priceValue}>
-              {listing.buyoutCurrencyValuePerToken?.displayValue}
-            </div> */}
-          </div>
-        </div>
-        <div className={style.likesContainer}>
-          <AiOutlineHeart className={style.heartIcon} />
-          <div className={style.likeCounter}>
-            {listing.asset?.stats?.favorite ?? 0}
+          <div className={style.priceContainer}>
+            <div className={style.priceTitle}>Buy at</div>
+            <div className={style.wethImageContainer}>
+              <Image height={16} width={16} alt="weth" src="/weth-logo.svg" />
+              <div>{listing.price}</div>
+            </div>
           </div>
         </div>
       </div>

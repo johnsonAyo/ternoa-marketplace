@@ -4,7 +4,6 @@ import { useAddress, useMetamask, useDisconnect } from "@thirdweb-dev/react";
 import {
   SearchIcon,
   MenuIcon,
-  CreditCardIcon,
   MoonIcon,
   SunIcon,
 } from "@heroicons/react/outline";
@@ -12,12 +11,13 @@ import { UserCircleIcon } from "@heroicons/react/solid";
 import SearchInput from "./SearchInput";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import MyModal from "../../pages/AddNft";
 
 const Navbar = () => {
   const connectWithMetamask = useMetamask();
   const address = useAddress();
   const disconnect = useDisconnect();
+
+  console.log(address);
 
   const [mounted, setMounted] = useState(false);
 
@@ -52,7 +52,7 @@ const Navbar = () => {
   };
 
   const style = {
-    themeSwitcher: `h-8 w-8 cursor-pointer text-gray-600 transition-all hover:text-black dark:text-gray-300`,
+    themeSwitcher: `h-8 w-8 cursor-pointer text-gray-600 transition-all hover:text-black dark:text-gray-300 `,
     wrapper: `sticky top-0 z-50 bg-white px-4 py-2 shadow-md dark:bg-gray-900 flex items-center justify-between space-x-6`,
     logoContainer: `xl:pr-40`,
     searchContainer: `ml-8 hidden flex-1 sm:block`,
@@ -89,6 +89,11 @@ const Navbar = () => {
           <h1> {address ? "Wallet Connected" : "Connect Wallet"}</h1>
         </button>
       </div>
+
+      <div className={style.menusContainer}>
+        {address && <h1>{address} </h1>}
+      </div>
+
       <div className={style.menusContainer}>
         {address && (
           <button onClick={disconnect}>

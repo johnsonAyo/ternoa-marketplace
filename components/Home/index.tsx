@@ -32,20 +32,10 @@ export default function Home() {
   const address = useAddress();
   const [collection, setCollection] = useState(collectionData);
   const router = useRouter();
-  const { slug } = router.query;
 
   useEffect(() => {
     if (!address) router.replace("/");
   }, [address]);
-
-  // useEffect(() => {
-  //   if (!slug) return;
-  //   (async () => {
-  //     const collectionData = await getCollection();
-
-  //     setCollection(collectionData);
-  //   })();
-  // }, [slug]);
 
   return (
     <div>
@@ -67,7 +57,7 @@ export default function Home() {
                 <div className={style.collectionLogoContainer}>
                   <Image
                     className={style.collectionLogo}
-                    src={collection?.image_url}
+                    src="https://res.cloudinary.com/dfi24gqb6/image/upload/v1654678416/9291_blen5k.png"
                     height={128}
                     width={128}
                     alt="logo"
@@ -75,15 +65,10 @@ export default function Home() {
                 </div>
 
                 <div className={style.collectionInfo}>
-                  <div className={style.title}>{collection?.name}</div>
+                  <div className={style.title}>Ternoa Marketplace</div>
 
                   <div className={style.creatorInfoContainer}>
-                    <div className={style.creator}>
-                      Created by vitalik
-                      {/* <span className={style.creatorName}>
-                        {collection?.creator}
-                      </span> */}
-                    </div>
+                    <div className={style.creator}>Created by Johnson</div>
                     <MdVerified className={style.verified} />
                   </div>
                 </div>
