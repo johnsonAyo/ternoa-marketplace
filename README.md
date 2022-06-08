@@ -13,6 +13,7 @@ Frontend repository for Ternoa project
 - Next.js
 - mongoDB
 - NodeJS.
+- Typescript
 
 ## Installation
 1. Install [`Node JS`](https://nodejs.org/en/).
