@@ -57,7 +57,7 @@ const Navbar = () => {
     wrapper: `sticky top-0 z-50 bg-white px-4 py-2 shadow-md dark:bg-gray-900 flex items-center justify-between space-x-6`,
     logoContainer: `xl:pr-40`,
     searchContainer: `ml-8 hidden flex-1 sm:block`,
-    menusContainer: `hidden pr-6 lg:block xl:pl-8,`,
+    menusContainer: `hidden pr-6 lg:block xl:pl-8 cursor-pointer`,
     iconsContainer: `flex items-center space-x-6`,
     icons: `h-8 w-8 cursor-pointer text-gray-600 transition-all hover:text-black dark:text-gray-300 hover:dark:text-white`,
     desktopIcons: `hidden lg:block`,
@@ -75,7 +75,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div>
+      <div className={style.menusContainer}>
         <Link href="/AddNft">
           <h1>Create your NFT</h1>
         </Link>
