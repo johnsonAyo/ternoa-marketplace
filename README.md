@@ -16,7 +16,7 @@ Frontend repository for Ternoa project
 
 ## Installation
 1. Install [`Node JS`](https://nodejs.org/en/).
-2. To clone, run `git clone https://github.com/johnsonAyo/ternoa-marketplacegit`.
+2. To clone, run `git clone https://github.com/johnsonAyo/ternoa-marketplace.git`.
 3. `cd` into the root of the **project directory**.
 4. Run `yarn` on the terminal to install dependecies.
 5. Run `yarn run dev` on the terminal to Start the Application
