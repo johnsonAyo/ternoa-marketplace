@@ -25,7 +25,7 @@ export default function Modal() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     AddNft(state);
-    setTimeout(() => router.push("/"), 500);
+    router.push("/");
     toast.success("NFT Added Successfully");
   };
 
