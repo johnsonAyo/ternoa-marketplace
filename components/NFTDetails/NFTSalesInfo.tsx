@@ -1,6 +1,11 @@
 import React from "react";
 
-import { AiOutlineQuestionCircle,AiFillEdit, AiFillDelete,AiOutlineClockCircle } from "react-icons/ai";
+import {
+  AiOutlineQuestionCircle,
+  AiFillEdit,
+  AiFillDelete,
+  AiOutlineClockCircle,
+} from "react-icons/ai";
 import { Image } from "@chakra-ui/react";
 import MyModal from "../Header/Modal";
 
