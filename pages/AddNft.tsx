@@ -17,6 +17,10 @@ export default function Modal() {
   const AddNft = async (data: any) => {
     try {
       const response = await axios.post(url, data);
+      if (response.status === 201) {
+        router.replace("/");
+        toast.success("NFT Added Successfully");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -25,9 +29,8 @@ export default function Modal() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     AddNft(state);
-    router.replace("/");
-    toast.success("NFT Added Successfully");
   };
+  
 
   const handleInputChange = (e: any) => {
     let { name, value } = e.target;
