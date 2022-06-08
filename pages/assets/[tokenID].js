@@ -25,9 +25,7 @@ const NFT = () => {
   const { tokenID } = router.query;
   console.log(tokenID);
 
-  const editNft = () => {
-    router.replace(`http://localhost:3000/EditNft/${tokenID}`);
-  };
+  
 
   useEffect(() => {
     getListing();
@@ -85,7 +83,7 @@ const NFT = () => {
             <div className={style.rightContainer}>
               <NFTBasicInfo name={listing?.name} />
               <div className={style.buyoutContainer}>
-                <NFTSalesInfo deleteNft={deleteNft} editNft={editNft} />
+                <NFTSalesInfo deleteNft={deleteNft} />
               </div>
             </div>
           </div>

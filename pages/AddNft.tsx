@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/router";
 import TopNavbarLayout from "../layouts/TopNavbarLayout";
-// import { useNavigate } from "react-router-dom";
 
 const style = {
   wrapper: `m-20 lg:ml-80 lg:mr-80`,
@@ -18,6 +17,10 @@ export default function Modal() {
 
   const AddNft = async (data: any) => {
     const response = await axios.post(url, data);
+  };
+
+  const editNft = async (data: any) => {
+    const response = await axios.patch(url, data);
   };
 
   const handleSubmit = (e: any) => {
