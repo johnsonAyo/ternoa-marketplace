@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import { ThemeProvider } from "next-themes";
 import { AppProps } from "next/app";
-import { BrowserRouter } from 'react-router-dom';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

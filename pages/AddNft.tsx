@@ -1,5 +1,4 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/router";
@@ -16,11 +15,11 @@ export default function Modal() {
   const { title, desc, img, price } = state;
 
   const AddNft = async (data: any) => {
-    const response = await axios.post(url, data);
-  };
-
-  const editNft = async (data: any) => {
-    const response = await axios.patch(url, data);
+    try {
+      const response = await axios.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = (e: any) => {
@@ -55,6 +54,7 @@ export default function Modal() {
                 placeholder="Enter Name ..."
                 onChange={handleInputChange}
                 value={title}
+                required
               />
             </div>
             <div className="mb-6">
@@ -72,6 +72,7 @@ export default function Modal() {
                 placeholder="Enter description ..."
                 onChange={handleInputChange}
                 value={desc}
+                required
               />
             </div>
             <div className="mb-6">
@@ -89,6 +90,7 @@ export default function Modal() {
                 placeholder="Enter Image Link ..."
                 onChange={handleInputChange}
                 value={img}
+                required
               />
             </div>
             <div className="mb-6">
@@ -106,6 +108,7 @@ export default function Modal() {
                 placeholder="Enter the Listing Price ..."
                 onChange={handleInputChange}
                 value={price}
+                required
               />
             </div>
 

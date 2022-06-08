@@ -5,7 +5,6 @@ import axios from "axios";
 import TopNavbarLayout from "../../layouts/TopNavbarLayout";
 import NFTImage from "../../components/NFTDetails/NFTImage";
 import NFTSalesInfo from "../../components/NFTDetails/NFTSalesInfo";
-import NFTDetails from "../../components/NFTDetails/NFTDetails";
 import NFTBasicInfo from "../../components/NFTDetails/NFTBasicInfo";
 import { toast } from "react-toastify";
 
@@ -16,16 +15,15 @@ const style = {
   leftContainer: `flex flex-col space-y-4`,
   leftElement: "hidden lg:block",
   rightContainer: `flex flex-1 flex-col `,
+  buyoutContainer: ``,
 };
 
 const NFT = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [listing, setListing] = useState([]);
+  const [listing, setListing] = useState<any | null>([]);
   const { tokenID } = router.query;
   console.log(tokenID);
-
-  
 
   useEffect(() => {
     getListing();
@@ -74,10 +72,7 @@ const NFT = () => {
           <div className={style.nftContainer}>
             <div className={style.leftContainer}>
               <div className={style.leftElement}>
-                {<NFTImage image={listing.img} />}
-              </div>
-              <div className={style.leftElement}>
-                <NFTDetails />
+                {<NFTImage image={listing?.img} />}
               </div>
             </div>
             <div className={style.rightContainer}>
