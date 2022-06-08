@@ -9,11 +9,10 @@ const Logo = () => {
   return (
     <div className={style.wrapper}>
       <Image
-        src="https://s2.coinmarketcap.com/static/img/coins/200x200/9291.png"
-        width={40}
-        height={40}
+        src="https://www.ternoa.com/static/images/home/Ternoa-logo.svg"
+        width={100}
+        height={60}
       />
-      <h1>Ternoa</h1>
     </div>
   );
 };
