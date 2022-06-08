@@ -14,7 +14,7 @@ export default function Modal() {
   const [state, setState] = useState<any | null>("");
   const { title, desc, img, price } = state;
 
-  const AddNft = async (data: any) => {
+  const AddNft = async (data: Object) => {
     try {
       const response = await axios.post(url, data);
       if (response.status === 201) {
@@ -30,7 +30,6 @@ export default function Modal() {
     e.preventDefault();
     AddNft(state);
   };
-  
 
   const handleInputChange = (e: any) => {
     let { name, value } = e.target;
@@ -57,6 +56,7 @@ export default function Modal() {
                 placeholder="Enter Name ..."
                 onChange={handleInputChange}
                 value={title}
+                maxLength={40}
                 required
               />
             </div>
@@ -75,6 +75,7 @@ export default function Modal() {
                 placeholder="Enter description ..."
                 onChange={handleInputChange}
                 value={desc}
+                maxLength={40}
                 required
               />
             </div>
@@ -86,7 +87,7 @@ export default function Modal() {
                 Img
               </label>
               <input
-                type="text"
+                type="url"
                 name="img"
                 id="img"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -111,6 +112,7 @@ export default function Modal() {
                 placeholder="Enter the Listing Price ..."
                 onChange={handleInputChange}
                 value={price}
+                maxLength={5}
                 required
               />
             </div>

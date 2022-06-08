@@ -1,6 +1,5 @@
 import React from "react";
 import { Image } from "@chakra-ui/react";
-import { AiOutlineHeart } from "react-icons/ai";
 
 const style = {
   wrapper: `relative flex h-[450px] w-[340px] cursor-pointer 
@@ -18,7 +17,7 @@ const style = {
   likesContainer: `flex items-center justify-end space-x-2`,
 };
 
-const NftCard = ({ listing }: { listing: any }) => {
+const NftCard = ({ listing }: any) => {
   return (
     <div className={style.wrapper}>
       <div className={style.imageContainer}>

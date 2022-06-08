@@ -13,7 +13,7 @@ const style = {
   subInfoContainer: `hidden lg:block`,
 };
 
-const NFTBasicInfo = ({ name }: any) => {
+const NFTBasicInfo = ({ name,desc}: any) => {
   console.log(name);
   const actionItems = [
     { icon: <BiRefresh className={style.icon} /> },
@@ -33,7 +33,7 @@ const NFTBasicInfo = ({ name }: any) => {
           ))}
         </div>
       </div>
-      <div className={style.collectionTitle}> {name} </div>
+      <div className={style.collectionTitle}> {desc} </div>
       <div className={style.subInfoContainer}>
         <NFTSubInfo />
       </div>

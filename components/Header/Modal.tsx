@@ -15,6 +15,7 @@ const initialState = {
   desc: "",
   img: "",
 };
+
 export default function MyModal() {
   let [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState<any | null>(initialState);
@@ -23,7 +24,7 @@ export default function MyModal() {
   const { tokenID } = router.query;
 
   console.log("tokenId", tokenID);
-  const editNft = async (data: any) => {
+  const editNft = async (data: Object) => {
     try {
       const response = await axios.patch(
         `https://ternoa.herokuapp.com/api/nft/${tokenID}`,
@@ -113,6 +114,7 @@ export default function MyModal() {
                         onChange={handleInputChange}
                         value={title}
                         required
+                        maxLength={40}
                       />
 
                       <label
@@ -130,6 +132,7 @@ export default function MyModal() {
                         onChange={handleInputChange}
                         value={desc}
                         required
+                        maxLength={40}
                       />
 
                       <label
@@ -139,7 +142,7 @@ export default function MyModal() {
                         Img
                       </label>
                       <input
-                        type="text"
+                        type="url"
                         name="img"
                         id="img"
                         className=" m-2 mt-1  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -162,6 +165,7 @@ export default function MyModal() {
                         placeholder="Enter your Listing Price ..."
                         onChange={handleInputChange}
                         value={price}
+                        maxLength={5}
                       />
 
                       <button

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header/Header";
 
-const TopNavbarLayout = ({ children }: any) => {
+const TopNavbarLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Header />

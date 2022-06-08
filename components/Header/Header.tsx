@@ -7,6 +7,7 @@ import {
   MoonIcon,
   SunIcon,
 } from "@heroicons/react/outline";
+import truncateEthAddress from "truncate-eth-address";
 import { UserCircleIcon } from "@heroicons/react/solid";
 import SearchInput from "./SearchInput";
 import Link from "next/link";
@@ -91,7 +92,7 @@ const Navbar = () => {
       </div>
 
       <div className={style.menusContainer}>
-        {address && <h1>{address} </h1>}
+        {address && <h1> {`${truncateEthAddress(address)}`} </h1>}
       </div>
 
       <div className={style.menusContainer}>
