@@ -32,7 +32,7 @@ const NFT = () => {
   const deleteNft = async () => {
     try {
       const response = await axios.delete(
-        `https://ternoa.herokuapp.com/api/nft/${tokenID}`
+        `https://ternoa-backend.onrender.com/api/nft/${tokenID}`
       );
       if (response.status === 204) {
         router.replace("/");
@@ -50,9 +50,7 @@ const NFT = () => {
   const getListing = async () => {
     try {
       setLoading(true);
-      const list = await axios.get(
-        `https://ternoa.herokuapp.com/api/nft/${tokenID}`
-      );
+      const list = await axios.get(`${process.env.API_URL}/${tokenID}`);
       if (list.status === 200) {
         setListing(list.data.data.data);
         setLoading(false);

@@ -27,7 +27,7 @@ export default function MyModal() {
   const editNft = async (data: Object) => {
     try {
       const response = await axios.patch(
-        `https://ternoa.herokuapp.com/api/nft/${tokenID}`,
+        `https://ternoa-backend.onrender.com/api/nft/${tokenID}`,
         data
       );
       router.push("/");
