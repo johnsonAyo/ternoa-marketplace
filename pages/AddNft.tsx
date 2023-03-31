@@ -10,7 +10,7 @@ const style = {
 
 export default function Modal() {
   const router = useRouter();
-  const url = `https://ternoa.herokuapp.com/api/nft`;
+  const url = `https://ternoa-backend.onrender.com/api/nft`;
   const [state, setState] = useState<any | null>("");
   const { title, desc, img, price } = state;
 
