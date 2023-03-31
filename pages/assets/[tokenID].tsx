@@ -50,7 +50,9 @@ const NFT = () => {
   const getListing = async () => {
     try {
       setLoading(true);
-      const list = await axios.get(`${process.env.API_URL}/${tokenID}`);
+      const list = await axios.get(
+        `https://ternoa-backend.onrender.com/api/nft/${tokenID}`
+      );
       if (list.status === 200) {
         setListing(list.data.data.data);
         setLoading(false);
